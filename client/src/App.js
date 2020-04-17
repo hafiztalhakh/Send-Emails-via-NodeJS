@@ -7,7 +7,7 @@ import axios from 'axios';
 class App extends Component {
 
   state = {
-    sender_email: '',
+    sender_email: 'talha_ahmed96@live.com',
     receiver_email: '',
     subject: '',
     messagae: '',
@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <input type="text" name="sender_email" placeholder="Email Address of Sender" onChange={(e) => { this.setState({ sender_email: e.target.value }) }} />
+          <input type="text" name="sender_email" value={this.state.sender_email} disabled/>
           <br />
           <input type="text" name="receiver_email" placeholder="Email Address of Receiver" onChange={(e) => { this.setState({ receiver_email: e.target.value }) }} />
           <br />

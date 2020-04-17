@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const sendGridTransport = require('nodemailer-sendgrid-transport');
 
 const apiKey = require('./emailAPIKey').apkiKey;
+const email = require('./emailAPIKey').email;
 
 const app = express();
 const port = process.env.port || 8081;
@@ -42,7 +43,7 @@ app.post('/email', (req, res, next) => {
 
     transporter.sendMail({
         to: receiver_email,
-        from: 'talha_ahmed96@live.com',
+        from: email,
         subject: subject,
         html: `<h1>${messagae}</h1>`
     })
