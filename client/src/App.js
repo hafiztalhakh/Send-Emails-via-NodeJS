@@ -1,26 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import axios from 'axios';
+
+class App extends Component {
+
+  state = {
+    sender_email: '',
+    receiver_email: '',
+    subject: '',
+    messagae: '',
+  }
+
+  sendEmail = () => {
+    axios({
+      url: 'http://localhost:8081/email',
+      method: 'POST',
+      data: this.state,
+    })
+      .then(res => {
+        console.log('hogya');
+      })
+      .catch(err => {
+        console.log('err');
+      })
+  }
+
+  render() {
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <input type="text" name="sender_email" placeholder="Email Address of Sender" onChange={(e) => { this.setState({ sender_email: e.target.value }) }} />
+          <br />
+          <input type="text" name="receiver_email" placeholder="Email Address of Receiver" onChange={(e) => { this.setState({ receiver_email: e.target.value }) }} />
+          <br />
+          <input type="text" name="subject" placeholder="Subject" onChange={(e) => { this.setState({ subject: e.target.value }) }} />
+          <br />
+          <input type="text" name="message" placeholder="Enter message here" onChange={(e) => { this.setState({ messagae: e.target.value }) }} />
+          <br />
+          <button onClick={this.sendEmail}>Send</button>
+        </header>
+      </div>
+    );
+
+  }
 }
 
 export default App;
