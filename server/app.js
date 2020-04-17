@@ -33,10 +33,10 @@ const transporter = nodemailer.createTransport(sendGridTransport({
     }
 }))
 
+//POST Request of Email
 
 app.post('/email', (req, res, next) => {
 
-    const sender_email = req.body.sender_email;
     const receiver_email = req.body.receiver_email;
     const subject = req.body.subject;
     const messagae = req.body.messagae;
@@ -47,9 +47,6 @@ app.post('/email', (req, res, next) => {
         subject: subject,
         html: `<h1>${messagae}</h1>`
     })
-        .then(() => {
-            console.log('Email Sent');
-        })
         .catch(err => {
             console.log(err);
         })

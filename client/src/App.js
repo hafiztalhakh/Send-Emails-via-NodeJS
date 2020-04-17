@@ -34,7 +34,7 @@ class App extends Component {
         <header className="App-header">
           <input type="text" name="sender_email" value={this.state.sender_email} disabled/>
           <br />
-          <input type="text" name="receiver_email" placeholder="Email Address of Receiver" onChange={(e) => { this.setState({ receiver_email: e.target.value }) }} />
+          <input type="email" name="receiver_email" placeholder="Email Address of Receiver" onChange={(e) => { this.setState({ receiver_email: e.target.value }) }} />
           <br />
           <input type="text" name="subject" placeholder="Subject" onChange={(e) => { this.setState({ subject: e.target.value }) }} />
           <br />
